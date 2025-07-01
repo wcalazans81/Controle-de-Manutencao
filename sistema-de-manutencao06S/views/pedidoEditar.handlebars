@@ -1,0 +1,25 @@
+{{!< main}}
+<main>
+    <h1 class="col-6 offset-3" id="ti">Manutênção AFFEMG</h1>
+    <h3 class="col-6 offset-3" id="sti">Editar Pedidos de Manutênção</h3>
+    <div class="conainer">
+        <div class="col-6 offset-3">
+            <form action="/editar" method="post">
+                <input type="hidden" name="id" value="{{pedido.id}}">
+                <input type="text" class="form-control" name="empresa" value="{{pedido.empresa}}" placeholder="Empresa" required>
+                <input type="text" class="form-control" name="nome" value="{{pedido.nome}}" id="inome" placeholder="Nome" required>
+                <input type="text" class="form-control" name="setor" value="{{pedido.setor}}" id="isetor" placeholder="setor" required>
+                {{!--<input type="date" class="form-control" name="data" value="{{pedido.data}}" id="idata"  required>--}}
+                <label class="form-control" name="data_00" id="idata_00">Preenchimento de data Automática</label>
+                <input type="text" class="form-control" name="descricao" value="{{pedido.descricao}}" id="idescricao" maxlength="200" placeholder="Digite a descrição do serviço..." required>
+                <input type="submit" class="btn btn-primary" value="Alterar"  id="salvar"> 
+            </form>
+        </div>
+    </div>
+    <script>
+            {{#if alerta}}
+                window.alert("{{alerta}}");
+                window.location.href = '/'; // Redirecionar para a rota principal
+            {{/if}}
+        </script>
+</main>

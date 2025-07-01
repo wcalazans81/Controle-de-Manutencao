@@ -1,0 +1,129 @@
+{{!< main}}
+<div class="cab text-center">
+    <h1 class="text-center">Controle de Estoque</h1>
+  </div>
+<main class="container mt-4" id="pdf-content">
+  <!-- Campo de busca -->
+  <div class="busca-container ocultar-pdf text-center">
+    <button id="btnMostrarBusca" class="btn btn-outline-primary mb-2">
+      🔍 Buscar no Estoque
+    </button>
+    <div id="campoBusca" style="display: none;">
+      <input type="text" id="inputBusca" list="opcoesBusca" placeholder="Digite a descrição..." class="form-control mb-2">
+      <datalist id="opcoesBusca"></datalist>
+      <button id="btnBuscar" class="btn btn-primary">Buscar</button>
+    </div>
+  </div>
+
+  <!-- Adicionar Item -->
+  <div class="adicionar-container mt-5 ocultar-pdf">
+    <h2 class="text-center">Adicionar Item</h2>
+    <a href="/" class="btn btn-secondary">Voltar</a>
+    <div class="row">
+      <div class="col-12 col-sm-6 col-md-3 mb-2">
+        <label>Categoria</label>
+        <select id="categoriaSelect" class="form-control">
+          <option value="">Selecione</option>
+          <option value="eletrica">Elétrica</option>
+          <option value="hidraulica">Hidráulica</option>
+          <option value="pintura">Pintura</option>
+          <option value="ar_condicionado">Ar Condicionado</option>
+          <option value="edificacao">Edificação</option>
+        </select>
+      </div>
+      <div class="col-12 col-sm-6 col-md-3 mb-2">
+        <label>Nome</label>
+        <input type="text" id="nomeItem" class="form-control" placeholder="Nome do item">
+      </div>
+      <div class="col-6 col-md-2 mb-2">
+        <label>Quantidade</label>
+        <input type="number" id="quantidadeItem" class="form-control" placeholder="Qtd">
+      </div>
+      <div class="col-6 col-md-3 mb-2">
+        <label>Descrição</label>
+        <input type="text" id="descricaoItem" class="form-control" placeholder="Descrição">
+      </div>
+      <div class="col-12 col-md-1 d-flex align-items-end">
+        <button id="btnAdicionar" class="btn btn-success w-100">Adicionar</button>
+      </div>
+    </div>
+  </div>
+  <div id="resultado-busca"></div>
+  <!-- Tabelas por Categoria (telas médias e grandes) -->
+  <div class="d-none d-md-block">
+    {{#each categorias}}
+      <h3 class="mt-5">{{this.nomeFormatado}}</h3>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Quantidade</th>
+            <th>Descrição</th>
+            <th>Data</th>
+            <th class="ocultar-pdf">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each this.itens}}
+            <tr>
+              <td>{{nome}}</td>
+              <td>{{quantidade}}</td>
+              <td>{{descricao}}</td>
+              <td>{{formatDate data}}</td>
+              <td class="ocultar-pdf">
+                <button class="btn-adicionar btn btn-sm btn-success" data-id="{{id}}" data-tabela="{{../nomeTabela}}">+</button>
+                <button class="btn-remover btn btn-sm btn-warning" data-id="{{id}}" data-tabela="{{../nomeTabela}}">-</button>
+                <button class="btn-excluir btn btn-sm btn-danger" data-id="{{id}}" data-tabela="{{../nomeTabela}}">Excluir</button>
+              </td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    {{/each}}
+  </div>
+  <div id="resultado-busca"></div>
+  <!-- Cards por Categoria (telas pequenas) -->
+  <div class="d-block d-md-none">
+    {{#each categorias}}
+      <h4 class="mt-5">{{this.nomeFormatado}}</h4>
+      <div class="row">
+        {{#each this.itens}}
+        <div class="col-12 mb-3">
+          <div class="card">
+            <div class="card-body">
+              <p><strong>Nome:</strong> {{nome}}</p>
+              <p><strong>Qtd:</strong> {{quantidade}}</p>
+              <p><strong>Descrição:</strong> {{descricao}}</p>
+              <p><strong>Data:</strong> {{formatDate data}}</p>
+              <div class="d-flex justify-content-between ocultar-pdf mt-2">
+                <button class="btn-adicionar btn btn-sm btn-success" data-id="{{id}}" data-tabela="{{../nomeTabela}}">+</button>
+                <button class="btn-remover btn btn-sm btn-warning" data-id="{{id}}" data-tabela="{{../nomeTabela}}">-</button>
+                <button class="btn-excluir btn btn-sm btn-danger" data-id="{{id}}" data-tabela="{{../nomeTabela}}">Excluir</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+    {{/each}}
+  </div>
+
+  <!-- Botão PDF -->
+  <div class="ocultar-pdf text-center">
+    <button id="btnSalvarPDF" class="btn btn-danger mt-4">Salvar Estoque em PDF</button>
+  </div>
+</main>
+
+<footer class="card-footer text-center mt-4">
+  <p>&copy; 2025 Controle de Estoque - Sistema de Manutenção</p>
+  <p>
+    Site criado por <a href="https://github.com/wcalazans81" target="_blank" rel="external">Wellington Calazans</a><br>
+    No desafio do <a href="https://www.youtube.com/c/CursoemVídeo" target="_blank" rel="external">Curso em Vídeo</a>
+  </p>
+</footer>
+
+<!-- CSS e JS -->
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/estoque.css">
+<script src="/js/estoque.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>

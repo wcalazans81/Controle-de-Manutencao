@@ -1,0 +1,176 @@
+/* Barra do topo com menu à esquerda e usuário à direita */
+.user-nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #f8f9fa;
+  z-index: 1050;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.user-nav-bar .nav-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.user-nav-bar .user-area {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+body {
+  background-color: rgb(196, 192, 192);
+  padding-top: 150px; /* espaço p/ barra de 60px + margem */
+  font-weight: bolder;
+}
+
+.cab #t1{
+    margin-top: 100px;
+    
+}
+
+form{
+    margin-top: 30px;
+}
+
+form input{
+    margin-top: 15px;
+}
+
+form label#idata{
+    margin-top: 15px;
+    text-align: center;
+    width: 300px;
+}
+
+form input#idescricao{
+    margin-top: 15px;
+}
+
+form button{
+    margin-top: 10px;
+}
+
+form a{
+    margin-top: 15px;
+    margin-left: 20px;
+}
+
+.card {
+    margin-top: 40px;
+    margin-bottom: 30px;
+    padding: 10px;
+}
+
+.texto{    
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    text-align: justify;
+}
+
+.card a{
+    margin-top: 10px;
+}
+
+.card-footer {
+    background-color: rgb(105, 103, 103);
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    margin: 30px auto 15px auto; /* 30px espaço acima + 15px da borda inferior */
+    padding: 10px;
+    line-height: 2em;
+    width: 98vw;
+    max-width: 1200px;
+    z-index: 1000;
+}
+
+
+/* Links dentro do footer */
+.card-footer a {
+    color: white;
+    text-decoration: none;
+    font-weight: bolder;
+}
+
+.card-footer a:hover {
+    text-decoration: underline;
+    color: black;
+}
+
+@media print {
+    header,
+    #filtroForm,
+    .btn,
+    nav,
+    a[href="/"],
+    a[href="/relatorio"],
+    a[href="/estoque"],
+    a[href="/checklist"],
+    a[href="/sobre-nos"],
+    .navbar {
+      display: none !important;
+    }
+  
+    main, footer {
+      margin: 0;
+      padding: 0;
+    }
+  
+    body {
+      background: white;
+    }
+  
+    h1, h3 {
+      text-align: center;
+    }
+  
+    table {
+      width: 100%;
+      border: 1px solid black;
+    }
+}
+
+.highlight {
+  border: 2px solid red;
+  background-color: #ffe6e6;
+}
+
+/* Reforça posicionamento correto do botão */
+#toggleSenha {
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(20%) !important;
+  right: 0.75rem !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  height: auto !important;
+  width: auto !important;
+  background: transparent !important;
+  border: none !important;
+  z-index: 10 !important;
+}
+
+/* Garante que o campo de senha tenha espaço para o botão */
+#senhaInput {
+  padding-right: 2.5rem !important;
+  position: relative;
+}
+
+/* Torna a navbar Bootstrap fixa no topo */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1060; /* maior que outros elementos para garantir visibilidade */
+}
+
+

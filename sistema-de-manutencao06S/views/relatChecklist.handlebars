@@ -1,0 +1,109 @@
+{{!< main}}
+<div class="cab text-center">
+  <h1 id="t1">Checklist Manutenção AFFEMG</h1>
+  <h3 id="t2">Relatório de Checklist</h3>
+</div>
+<main class="container mt-4">
+  <!-- Filtro -->
+  <form action="/checklist/relatChecklist" method="GET" class="row g-3 align-items-end" id="filtroForm">
+    <div class="col-12 col-md-3">
+      <label for="mes">Mês:</label>
+      <select name="mes" id="mes" class="form-control">
+        <option value="">-- Escolha um mês --</option>
+        <option value="01">Janeiro</option>
+        <option value="02">Fevereiro</option>
+        <option value="03">Março</option>
+        <option value="04">Abril</option>
+        <option value="05">Maio</option>
+        <option value="06">Junho</option>
+        <option value="07">Julho</option>
+        <option value="08">Agosto</option>
+        <option value="09">Setembro</option>
+        <option value="10">Outubro</option>
+        <option value="11">Novembro</option>
+        <option value="12">Dezembro</option>
+      </select>
+    </div>
+
+    <div class="col-12 col-md-3">
+      <label for="ano">Ano:</label>
+      <select name="ano" id="ano" class="form-control">
+        <option value="">-- Escolha o ano --</option>
+        <option value="2025">2025</option>
+      </select>
+    </div>
+
+    <div class="col-12 col-md-6 d-flex flex-wrap gap-2">
+      <button type="submit" class="btn btn-primary">Buscar</button>
+      <button type="button" class="btn btn-secondary" onclick="limparFiltro()">Limpar</button>
+      <button type="button" class="btn btn-success" onclick="salvarPDF_01()">Salvar em PDF</button>
+      <a href="/" class="btn btn-warning mb-2">Voltar</a>
+    </div>
+  </form>
+
+  <!-- Resultados -->
+  {{#if checklist.length}}
+    <div id="tabelaResultado" class="mt-4">
+
+    <!-- TABELA - visível apenas em md (>=768px) -->
+    <div class="d-none d-md-block">
+      {{#each checklist}}
+        <table class="table table-bordered mb-4">
+          <tbody>
+            <tr><td><strong>Data</strong></td><td>{{formatDate data}}</td></tr>
+            <tr><td><strong>Elétrica</strong></td><td>{{checkStatus eletrica}}</td></tr>
+            <tr><td><strong>Hidráulica</strong></td><td>{{checkStatus hidraulica}}</td></tr>
+            <tr><td><strong>Esgoto</strong></td><td>{{checkStatus esgoto}}</td></tr>
+            <tr><td><strong>Pintura</strong></td><td>{{checkStatus pintura}}</td></tr>
+            <tr><td><strong>Eletrodoméstico</strong></td><td>{{checkStatus eletrodomestico}}</td></tr>
+            <tr><td><strong>Eletroeletrônico</strong></td><td>{{checkStatus eletroeletronico}}</td></tr>
+            <tr><td><strong>Móveis</strong></td><td>{{checkStatus moveis}}</td></tr>
+            <tr><td><strong>Porta</strong></td><td>{{checkStatus porta}}</td></tr>
+            <tr><td><strong>Janela</strong></td><td>{{checkStatus janela}}</td></tr>
+            <tr><td><strong>Ar Condicionado</strong></td><td>{{checkStatus arcondicionado}}</td></tr>
+            <tr><td><strong>Outros</strong></td><td>{{checkStatus outros}}</td></tr>
+          </tbody>
+        </table>
+      {{/each}}
+    </div>
+
+    <!-- CARDS - visível apenas em sm (<768px) -->
+    <div class="d-block d-md-none">
+      {{#each checklist}}
+        <div class="card mb-3 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title"><strong>Data:</strong> {{formatDate data}}</h5>
+            <p><strong>Elétrica:</strong> {{checkStatus eletrica}}</p>
+            <p><strong>Hidráulica:</strong> {{checkStatus hidraulica}}</p>
+            <p><strong>Esgoto:</strong> {{checkStatus esgoto}}</p>
+            <p><strong>Pintura:</strong> {{checkStatus pintura}}</p>
+            <p><strong>Eletrodoméstico:</strong> {{checkStatus eletrodomestico}}</p>
+            <p><strong>Eletroeletrônico:</strong> {{checkStatus eletroeletronico}}</p>
+            <p><strong>Móveis:</strong> {{checkStatus moveis}}</p>
+            <p><strong>Porta:</strong> {{checkStatus porta}}</p>
+            <p><strong>Janela:</strong> {{checkStatus janela}}</p>
+            <p><strong>Ar Condicionado:</strong> {{checkStatus arcondicionado}}</p>
+            <p><strong>Outros:</strong> {{checkStatus outros}}</p>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+
+  </div>
+{{/if}}
+
+
+
+</main>
+
+<footer class="card-footer text-center mt-4">
+  <p>
+    Site criado por <a href="https://github.com/wcalazans81" target="_blank" rel="external">Wellington Calazans</a> <br>
+    No desafio do <a href="https://www.youtube.com/c/CursoemV%C3%ADdeo" target="_blank" rel="external">Curso em Vídeo</a>
+  </p>
+</footer>
+
+<!-- Scripts -->
+<script src="/js/relatChecklist.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>

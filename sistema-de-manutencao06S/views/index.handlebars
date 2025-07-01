@@ -1,0 +1,110 @@
+{{!< main}}
+
+<div class="cab text-center">
+  <h1 id="t1">Manutenção AFFEMG</h1>
+  <h3 id="t2">Pedidos de Manutenção</h3>
+</div>
+
+<main>
+  <div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-10 col-md-8 col-lg-6">
+
+      <h4 class="mb-3 text-center">Cadastro de Pedido de Manutenção</h4>
+
+      {{#if alerta}}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          {{alerta}}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+        </div>
+      {{/if}}
+
+      <form action="/cadastrar" method="POST">
+        <!-- Empresa - radio -->
+        <label class="form-label">Empresa</label>
+        <div class="mb-3">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="empresa" id="empresa1" value="AFFEMG" required>
+            <label class="form-check-label" for="empresa1">AFFEMG</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="empresa" id="empresa2" value="FUNDAFFEMG">
+            <label class="form-check-label" for="empresa2">FUNDAFFEMG</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="empresa" id="empresa3" value="FISCO CORRETORA">
+            <label class="form-check-label" for="empresa3">FISCO CORRETORA</label>
+          </div>
+        </div>
+
+        <!-- Nome -->
+        <div class="mb-3">
+          <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome" required>
+        </div>
+
+        <!-- Setor -->
+        <div class="mb-3">
+          <input type="text" class="form-control" name="setor" id="setor" placeholder="Setor" required>
+        </div>
+
+        <!-- Data (informativo) -->
+        <div class="mb-3">
+          <label class="form-control bg-light text-muted">Preenchimento de data automática</label>
+        </div>
+
+        <!-- Descrição -->
+        <div class="mb-3">
+          <textarea class="form-control" name="descricao" id="idescricao" maxlength="200" rows="3" placeholder="Digite a descrição do serviço..." autocomplete="on" required></textarea>
+        </div>
+
+        <!-- Botão -->
+        <div class="d-grid">
+          <input type="submit" class="btn btn-primary" value="Cadastrar" id="salvar">
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+
+  {{!-- Alertas --}}
+  <script>
+    {{#if alerta}}
+      window.alert("{{alerta}}");
+      window.location.href = '/';
+    {{/if}}
+  </script>
+
+  {{!-- Lista de serviços --}}
+  <div class="container mt-4">
+    <div class="row">
+      {{#each servico}}
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
+          <div class="card">
+            <div class="card-body">
+              <p><strong>Empresa:</strong> {{empresa}}</p>
+              <p><strong>Nome:</strong> {{nome}}</p>
+              <p><strong>Setor:</strong> {{setor}}</p>
+              <p><strong>Data:</strong> {{formatDate data}}</p>
+              <p><strong>Descrição:</strong> {{descricao}}</p>
+              <a href="/pedidoEditar/{{id}}" class="btn btn-warning w-100 mb-2">Editar</a>
+              <a class="btn btn-danger w-100 restriExcluir" href="/excluir/{{id}}">Excluir</a>
+            </div>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+</main>
+
+<div class="card-footer text-center mt-5 mb-4">
+  <footer>
+    <p>
+      Site criado por <a href="https://github.com/wcalazans81" target="_blank" rel="external">Wellington Calazans</a><br>
+      No desafio do <a href="https://www.youtube.com/c/CursoemVídeo" target="_blank" rel="external">Curso em Vídeo</a>
+    </p>
+  </footer>
+</div>
+<script src="/js/index.js"></script>
+<script src="/js/menu.js" defer></script>

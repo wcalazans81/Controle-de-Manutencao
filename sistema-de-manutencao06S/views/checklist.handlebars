@@ -1,0 +1,81 @@
+<main class="flex-grow-1">
+  <div class="cab text-center">
+    <h1 id="t1">Checklist Manutenção AFFEMG</h1>
+    <h3 id="t2">Cadastro de Checklist</h3>
+  </div>
+
+  <div class="container mt-4">
+    <form action="/checklist/cadastrar" method="POST">
+      <div class="row">
+        {{!-- Cada campo ocupa 12 colunas em mobile e 6 em desktop para visualização equilibrada --}}
+        <div class="col-12 col-md-6 mt-3">
+          <label for="eletrica">Elétrica</label>
+          <textarea class="form-control" id="eletrica" name="eletrica" maxlength="800" required placeholder="Descreva a manutenção elétrica"></textarea>
+        </div>
+
+        <div class="col-12 col-md-6 mt-3">
+          <label for="hidraulica">Hidráulica</label>
+          <textarea class="form-control" id="hidraulica" name="hidraulica" maxlength="800" required placeholder="Descreva a manutenção hidráulica"></textarea>
+        </div>
+
+        <div class="col-12 col-md-6 mt-3">
+          <label for="esgoto">Esgoto</label>
+          <textarea class="form-control" id="esgoto" name="esgoto" maxlength="800" required placeholder="Descreva a manutenção de esgoto"></textarea>
+        </div>
+
+        <div class="col-12 col-md-6 mt-3">
+          <label for="pintura">Pintura</label>
+          <textarea class="form-control" id="pintura" name="pintura" maxlength="800" required placeholder="Descreva a manutenção de pintura"></textarea>
+        </div>
+
+        <div class="col-12 col-md-6 mt-3">
+          <label for="eletrodomestico">Eletrodoméstico</label>
+          <textarea class="form-control" id="eletrodomestico" name="eletrodomestico" maxlength="800" required placeholder="Descreva a manutenção de eletrodomésticos"></textarea>
+        </div>
+
+        <div class="col-12 col-md-6 mt-3">
+          <label for="eletroeletronico">Eletroeletrônico</label>
+          <textarea class="form-control" id="eletroeletronico" name="eletroeletronico" maxlength="800" required placeholder="Descreva a manutenção de eletroeletrônicos"></textarea>
+        </div>
+
+        <div class="col-12 col-md-6 mt-3">
+          <label for="moveis">Móveis</label>
+          <textarea class="form-control" id="moveis" name="moveis" maxlength="800" required placeholder="Descreva a manutenção de móveis"></textarea>
+        </div>
+
+        <div class="col-12 col-md-6 mt-3">
+          <label for="porta">Portas</label>
+          <textarea class="form-control" id="porta" name="porta" maxlength="800" required placeholder="Descreva a manutenção da porta"></textarea>
+        </div>
+
+        <div class="col-12 col-md-6 mt-3">
+          <label for="janela">Janelas</label>
+          <textarea class="form-control" id="janela" name="janela" maxlength="800" required placeholder="Descreva a manutenção da janela"></textarea>
+        </div>
+
+        <div class="col-12 col-md-6 mt-3">
+          <label for="arcondicionado">Ar Condicionado</label>
+          <textarea class="form-control" id="arcondicionado" name="arcondicionado" maxlength="800" required placeholder="Descreva a manutenção do ar condicionado"></textarea>
+        </div>
+
+        <div class="col-12 mt-3">
+          <label for="outros">Outros</label>
+          <textarea class="form-control" id="outros" name="outros" rows="3" maxlength="800" required placeholder="Descreva outras manutenções"></textarea>
+        </div>
+      </div>
+
+      <div class="mt-4 d-flex flex-wrap gap-2">
+        <button type="submit" class="btn btn-success">Salvar</button>
+        <a href="/" class="btn btn-secondary">Voltar</a>
+        <a href="/relatchecklist" class="btn btn-info">Relatório Checklist</a>
+      </div>
+    </form>
+  </div>
+</main>
+
+<footer class="card-footer text-center mt-4">
+  <p>
+    Site criado por <a href="https://github.com/wcalazans81" target="_blank" rel="external">Wellington Calazans</a><br>
+    No desafio do <a href="https://www.youtube.com/c/CursoemV%C3%ADdeo" target="_blank" rel="external">Curso em Vídeo</a>
+  </p>
+</footer>
