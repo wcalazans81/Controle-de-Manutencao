@@ -21,4 +21,4 @@ Após rodar os comandos o terminal retornará se falta alguma dependência ou pa
 ___
 Para usar a aplicação basta abrir o navegador digitar http://localhost:3000/ 
 ***
-Este projeto só foi possível por causa do [Curso em Vídeo](https://www.youtube.com/c/CursoemV%C3%ADdeo) Valeu Gustavo Guanabara!!! 🖖
+Este projeto só foi possível por causa do [Curso em Vídeo](https://www.youtube.com/c/CursoemV%C3%ADdeo) Valeu **Gustavo Guanabara**!!! 🖖
